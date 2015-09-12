@@ -15,5 +15,8 @@ public interface EmpRepository extends JpaRepository<Emp, Long>{
 	
 	
 	@Query("select e from Emp e where level = :level")
-	public List<Emp> findLevel(@Param("level") int level); 
+	public List<Emp> findLevel(@Param("level") int level);
+	
+	@Query("select e from Emp e join fetch e.dept")
+	List<Emp> findAll2(); 
 }
