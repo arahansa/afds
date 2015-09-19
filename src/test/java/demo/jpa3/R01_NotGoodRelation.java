@@ -149,7 +149,7 @@ public class R01_NotGoodRelation{
 	}
 	
 	@Test
-	public void 프로젝션_테스트() throws Exception {
+	public void z_프로젝션_테스트() throws Exception {
 		System.out.println("프로젝션 테스트 ");
 		List<Object[]> emp2List = emp2Repository.projectionEmp2();
 		emp2List.forEach(e->{
@@ -164,10 +164,6 @@ public class R01_NotGoodRelation{
 		projectionByDto.forEach(System.out::println);
 	}
 	
-	@Test
-	public void 프로젝션_Dto() throws Exception {
-		
-	}
 	
 
 	
