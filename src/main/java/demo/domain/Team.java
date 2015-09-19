@@ -11,19 +11,23 @@ import javax.persistence.OneToMany;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
+// Team  * -- *  Emp
+// 		 TeamEmp
+//	(team_id, emp_id)
+// 1--many , many -- 1
+// many -----------many
 @Entity
-@Data @ToString(exclude="emps") @EqualsAndHashCode(exclude="emps")
-public class Dept {
-	@Id
-	@GeneratedValue	
-	private Long id;
+@Data @EqualsAndHashCode(of="id")
+public class Team {
 	
-	@Column(length=50)
-	private String name;
+	@Id @GeneratedValue
+	Long id;
 	
-	@OneToMany(mappedBy="dept")
-	Set<Emp> emps = new HashSet<>();
-
+	@Column
+	String name;
+	
+	@OneToMany(mappedBy="team")
+	Set<TeamEmp> teamEmps = new HashSet<>();
+	
 }
