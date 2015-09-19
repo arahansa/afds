@@ -20,6 +20,6 @@ public class TeamEmp {
 	Team team;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	Emp Emp;
+	Emp emp;
 	
 }

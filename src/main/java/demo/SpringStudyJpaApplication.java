@@ -19,7 +19,7 @@ import demo.repository.DeptRepository;
 import demo.repository.EmpRepository;
 import javassist.bytecode.SignatureAttribute.ClassSignature;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class SpringStudyJpaApplication {
 
     public static void main(String[] args) {

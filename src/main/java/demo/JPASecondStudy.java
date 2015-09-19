@@ -16,7 +16,7 @@ import demo.domain.Level2;
 import demo.repository.DeptRepository;
 import demo.repository.EmpRepository;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class JPASecondStudy {
 	public static void main(String[] args) {
 		SpringApplication.run(JPASecondStudy.class, args);

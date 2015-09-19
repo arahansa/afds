@@ -11,8 +11,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -23,7 +23,7 @@ import lombok.EqualsAndHashCode;
 @Data 
 // id 라는 필드 하나만 가지고 판단을 해라 ! 
 @EqualsAndHashCode(of="id")
-public class Emp {
+public class Emp2 {
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -37,16 +37,27 @@ public class Emp {
 	private Date birth;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	Dept dept;
+	private Dept dept;
 	
 	@Enumerated(EnumType.STRING)
 	// MySql 의 경우 enum기능을 지원한다.
 	// @Column(columnDefinition="VARCHAR(20)")
 	@Column(columnDefinition="enum('SILVER', 'BRONZE', 'GOLD')")
-	Level2 level2;
+	private Level2 level2;
 	
-	@OneToMany(mappedBy="emp")
-	Set <TeamEmp> teamEmps = new HashSet<>();
+	// 양방향관계에서는 관계의 책임을 mappedby 가 안 붙은 쪽이 책임을 진다.
+	@ManyToMany
+	private Set<Team2> teams = new HashSet<>();
 	
+	// 양방향에서의 한쪽에서의 세팅 권장
+	public void addTeam(Team2 team){
+		teams.add(team);
+		team.getEmps().add(this);
+	}
+	
+	public void removeTeam(Team2 team){
+		teams.remove(team);
+		team.getEmps().remove(this);
+	}
 	
 }

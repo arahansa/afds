@@ -25,5 +25,17 @@ public class Dept {
 	
 	@OneToMany(mappedBy="dept")
 	Set<Emp> emps = new HashSet<>();
+	
+	// 직원에게 부서 추가 메서드
+	public void addEmp(Emp emp){
+		emps.add(emp);
+		emp.setDept(this);
+	}
+	
+	// 직원에게 부서 제거
+	public void removeEmp(Emp emp){
+		emps.remove(emp);
+		emp.setDept(null);
+	}
 
 }
